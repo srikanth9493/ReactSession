@@ -22,6 +22,7 @@ const LIst = () => {
     // setisLoading(true);
     const resp = await fetch(`https://pokeapi.co/api/v2/pokemon/${pname}`);
     const data = await resp.json();
+
     setdetail({name: pname, weight: data.weight, images: data.sprites});
 
     // setpdata(data.results);

@@ -3,6 +3,9 @@ import "./App.css";
 import {useEffect, useState} from "react";
 import Child from "./Child";
 import LIst from "./Pokemon/LIst";
+import RefDemo from "./Session 4/RefDemo";
+import CallbackDemo from "./Session 4/useCallbackDemo";
+import MemoDemo from "./Session 4/MemoDemo";
 
 function App() {
   // console.log("i am in app");
@@ -30,7 +33,11 @@ function App() {
 
   return (
     <div className="App">
-      <LIst />
+      {/* <LIst /> */}
+      {/* <RefDemo /> */}
+      {/* <CallbackDemo /> */}
+
+      <MemoDemo />
       {/* <h1> count:{count.num}</h1>
       <button
         onClick={() => {
