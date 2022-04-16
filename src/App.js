@@ -6,6 +6,8 @@ import LIst from "./Pokemon/LIst";
 import RefDemo from "./Session 4/RefDemo";
 import CallbackDemo from "./Session 4/useCallbackDemo";
 import MemoDemo from "./Session 4/MemoDemo";
+import ContextAPIDemo from "./Session 5/ContextAPIDemo";
+import { ContextProvider } from "./Session 5/ContexProvider";
 
 function App() {
   // console.log("i am in app");
@@ -37,7 +39,7 @@ function App() {
       {/* <RefDemo /> */}
       {/* <CallbackDemo /> */}
 
-      <MemoDemo />
+      {/* <MemoDemo /> */}
       {/* <h1> count:{count.num}</h1>
       <button
         onClick={() => {
@@ -71,6 +73,10 @@ function App() {
       {/* {nums.map((x) => (
         <li>{x}</li>
       ))} */}
+
+
+        <ContextAPIDemo />
+      
     </div>
   );
 }
