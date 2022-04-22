@@ -1,28 +1,25 @@
 import React, {useState} from "react";
-import { useCountContex } from "./ContexProvider";
-
+import {useDispatch} from "react-redux";
+import {ADDITEM, useCountContex} from "./Store";
 
 const Button = () => {
   const [count, setcount] = useState(0);
+  let disptach = useDispatch();
 
-  // useReducer(reducer ,state ) => [state, dispatc function]
 
-  let [countstate, dispatch] = useCountContex();
+  // let [countstate, dispatch] = useCountContex();
 
-  console.log(countstate, "data");
+  // console.log(countstate, "data");
 
   const handleClick = () => {
-    dispatch({
-      type: "add",
-    });
-
+    disptach(ADDITEM("sri", "pass"));
     setcount(count + 1);
   };
 
   const handleClick2 = () => {
-    dispatch({
-      type: "remove",
-    });
+    // dispatch({
+    //   type: "remove",
+    // });
     setcount(count - 1);
   };
 

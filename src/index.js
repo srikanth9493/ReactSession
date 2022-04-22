@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {ContextProvider} from "./Session 5/ContexProvider";
+import {Provider} from "react-redux";
+import {store} from "./Session6/Store";
 
 ReactDOM.render(
-  <ContextProvider>
+  <Provider store={store}>
     <App />
-  </ContextProvider>,
+  </Provider>,
+
   document.getElementById("root")
 );
 

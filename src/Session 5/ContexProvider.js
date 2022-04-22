@@ -2,14 +2,11 @@ import {createContext, useContext, useReducer} from "react";
 
 let context = createContext();
 
-
-
 let init = {
   count: 0,
 };
 
-
-function reducer(state, action) {
+function reducer(state = [], action) {
   switch (action.type) {
     case "add":
       return {...state, count: state.count + 1};

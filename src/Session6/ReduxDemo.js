@@ -1,9 +1,8 @@
 import React from "react";
 import Container from "./Container";
-import {ContextProvider} from "./ContexProvider";
 import Hearder from "./Hearder";
 
-const ContextAPIDemo = () => {
+const ReduxDemo = () => {
   return (
     <div>
       <Hearder />
@@ -12,4 +11,4 @@ const ContextAPIDemo = () => {
   );
 };
 
-export default ContextAPIDemo;
+export default ReduxDemo;
