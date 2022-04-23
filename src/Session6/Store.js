@@ -1,5 +1,7 @@
 import {useSelector} from "react-redux";
-import {createStore} from "redux";
+import {combineReducers, createStore, applyMiddleware} from "redux";
+import thunk from "redux-thunk";
+import {composeWithDevTools} from "redux-devtools-extension";
 import App from "../App";
 
 export function ADDITEM(uname, pass) {
@@ -8,15 +10,17 @@ export function ADDITEM(uname, pass) {
   };
 }
 
-
+export function REMOVEITEM(uname, pass) {
+  return {
+    type: "remove",
+  };
+}
 
 let initialState = {
   count: 0,
-  todo: [],
-  pants: {},
 };
 
-function reducer(state = initialState, action) {
+function countReducer(state = initialState, action) {
   console.log(action, state, "it is  in reducer");
 
   switch (action.type) {
@@ -31,9 +35,65 @@ function reducer(state = initialState, action) {
   }
 }
 
-const store = createStore(reducer);
+//reducer
+
+const initState = {
+  isFetching: false,
+  fetchError: false,
+  data: [],
+};
+
+function fetchDataReducer(state = initState, {type, payload}) {
+  switch (type) {
+    case "INIT_API":
+      return {...initState, isFetching: true};
+
+    case "API_SUCCESS":
+      return {...initState, data: payload.data};
+
+    case "API_FAIL":
+      return {...initState, fetchError: payload.error};
+
+    default:
+      return state;
+  }
+}
+
+let rootReducer = combineReducers({
+  count: countReducer,
+  fetch: fetchDataReducer,
+});
+
+//action creator
+
+export function getData() {
+  return async (dispatch) => {
+    dispatch({type: "INIT_API"});
+    try {
+      let res = await fetch("https://jsonplaceholder.typicode.com/posts1");
+      let data = await res.json();
+
+      dispatch({
+        type: "API_SUCCESS",
+        payload: {
+          data: data,
+        },
+      });
+    } catch (ex) {
+      console.log(ex, "exceptin");
+      dispatch({type: "API_FAIL", payload: ex});
+    }
+  };
+}
+
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
 
 export {store};
+
+// https://jsonplaceholder.typicode.com/posts
 
 // useReducer // reuducer inital state as peramere
 

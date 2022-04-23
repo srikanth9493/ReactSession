@@ -1,11 +1,10 @@
 import React, {useState} from "react";
 import {useDispatch} from "react-redux";
-import {ADDITEM, useCountContex} from "./Store";
+import {ADDITEM, REMOVEITEM, useCountContex} from "./Store";
 
 const Button = () => {
   const [count, setcount] = useState(0);
   let disptach = useDispatch();
-
 
   // let [countstate, dispatch] = useCountContex();
 
@@ -17,9 +16,7 @@ const Button = () => {
   };
 
   const handleClick2 = () => {
-    // dispatch({
-    //   type: "remove",
-    // });
+    disptach(REMOVEITEM());
     setcount(count - 1);
   };
 

@@ -7,7 +7,7 @@ const Notification = () => {
 
   // console.log(countState, "notification");
 
-  let count = useSelector((state) => state.count);
+  let {count} = useSelector((state) => state.count);
   console.log(count, "consumeing state");
   return (
     <div style={{marginLeft: "auto"}}>
